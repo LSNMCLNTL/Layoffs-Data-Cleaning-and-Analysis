@@ -59,7 +59,6 @@ ORDER BY country ASC
 UPDATE layoffs_datacleaning2
 SET country = TRIM(TRAILING '.' FROM COUNTRY)
 
-
 --change date format from mm/dd/yyy to yyyy/mm/dd
 UPDATE layoffs_datacleaning2
 SET date = STR_TO_DATE(date, '%m/%d/%Y')
@@ -70,10 +69,6 @@ FROM layoffs_datacleaning2
 -- change data type of 'date' column from text to date 
 ALTER TABLE layoffs_datacleaning2 
 MODIFY COLUMN date DATE;
-
-SELECT *
-FROM layoffs_datacleaning2
-WHERE total_laid_off IS NULL and percentage_laid_off IS NULL
 
 SELECT company, industry
 FROM layoffs_datacleaning2
@@ -90,3 +85,21 @@ JOIN layoffs_datacleaning2 t2
 SET t1.industry = t2.industry
 WHERE (t1.industry IS NULL OR t1.industry ='')
 AND t2.industry IS NOT NULL
+
+-- Check if there are many null values in these columns
+DELETE
+FROM layoffs_datacleaning2
+WHERE total_laid_off IS NULL and percentage_laid_off IS NULL
+
+-- Check if they have been deleted in the table
+SELECT *
+FROM layoffs_datacleaning2
+WHERE total_laid_off IS NULL and percentage_laid_off IS NULL
+
+
+SELECT * FROM layoffs_datacleaning2
+
+ALTER TABLE layoffs_datacleaning2
+DROP COLUMN row_num
+
+SELECT * FROM layoffs_datacleaning2
