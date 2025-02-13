@@ -1,29 +1,17 @@
 -- Exploratory Data Analysis
 
-
+-- Identified the earliest and latest layoff events.
 SELECT MIN(date), MAX(date)
 FROM layoffs_datacleaning2
 ORDER BY date DESC;
 
+-- Checking the maximum number of layoffs recorded for a single event
 SELECT MAX(total_laid_off)
-FROM layoffs_datacleaning2
-
-SELECT MAX(total_laid_off), MAX(percentage_laid_off)
 FROM layoffs_datacleaning2
 
 SELECT *, MIN(total_laid_off)
 FROM layoffs_datacleaning2
 
-SELECT industry, count(industry) as count
-FROM layoffs_datacleaning2
-WHERE percentage_laid_off = 1
-GROUP BY industry
-ORDER BY count DESC
-
-SELECT * 
-FROM layoffs_datacleaning2
-WHERE percentage_laid_off = 1
-ORDER BY total_laid_off DESC
 
 -- Check which companies laid off the most employees
 SELECT company, SUM(total_laid_off) as total
@@ -43,12 +31,7 @@ FROM layoffs_datacleaning2
 GROUP BY country
 ORDER BY total desc;
 
-SELECT YEAR(date) as year, SUM(total_laid_off) as total_gg
-FROM layoffs_datacleaning2
-WHERE date IS NOT NULL 
-GROUP BY YEAR
-ORDER BY total_gg DESC
-
+-- Check which stage of the company did they laid off the most employees
 
 SELECT stage, SUM(total_laid_off) as total_gg
 FROM layoffs_datacleaning2
@@ -56,9 +39,17 @@ WHERE stage <> 'Unknown'
 GROUP BY stage
 ORDER BY stage 
 
+
+SELECT YEAR(date) as year, SUM(total_laid_off) as total_gg
+FROM layoffs_datacleaning2
+WHERE date IS NOT NULL 
+GROUP BY YEAR
+ORDER BY total_gg DESC
+
 SELECT SUM(total_laid_off)
 FROM layoffs_datacleaning2
 
+-- Monthly rolling total
 WITH rolling_total_date AS (
 SELECT 
     SUBSTRING(date,1,7) as month_yr, 
@@ -73,6 +64,7 @@ SELECT
     SUM(total_gg) OVER (ORDER BY month_yr) AS rolling_total
 FROM rolling_total_date rtd
 
+-- Compared the number of layoffs of each company for the years 2021, 2022, 2023.
 SELECT 
     company,
     SUM(CASE WHEN YEAR(date) = 2021 THEN total_laid_off ELSE 0 END) AS layoffs_2021,
@@ -84,6 +76,7 @@ WHERE date IS NOT NULL
 GROUP BY company
 ORDER BY SUM(total_laid_off) DESC;
 
+-- Top companies with the highest layoffs per year
 WITH companiess AS (
 SELECT company, YEAR(date) as year, SUM(total_laid_off) as total_gg
 FROM layoffs_datacleaning2
@@ -97,3 +90,5 @@ WHERE year IS NOT NULL and total_gg IS NOT NULL
 )
 SELECT * FROM ranking_per_year
 WHERE top_rank <=5
+
+
