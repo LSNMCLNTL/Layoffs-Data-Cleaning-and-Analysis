@@ -1,6 +1,6 @@
 ﻿# Layoffs Data Cleaning and Analysis
 
-** Project Overview **
+## Project Overview
 This project focuses on cleaning and analyzing a dataset containing information about layoffs across different companies, industries, and countries. The data is refined through structured SQL queries to remove inconsistencies, duplicates, and missing values, ensuring accuracy for further exploratory analysis
 ---
 
@@ -35,21 +35,20 @@ The data cleaning process follows these key steps:
 ---
 
 ## Exploratory Data Analysis (EDA)
-After cleaning the dataset, an exploratory data analysis was conducted to derive insights and trends from the data.
+After cleaning the dataset, an exploratory data analysis was conducted to derive insights and trends from the data. I'll also explain the essential topics.
 
 ### 1. **General Statistics**
-- Identified the earliest and latest layoff events.
+- Identified the earliest and latest layoff events: The dataset covers layoffs from March 11, 2020, to March 6, 2023. This period includes major global events such as the COVID-19 pandemic and post-pandemic economic shifts, which likely contributed to the large-scale layoffs observed across various industries.
 - Found the maximum number of layoffs recorded for a single event.
-- Analyzed which companies had the highest total layoffs.
-
+  
 ### 2. **Layoffs by Category**
-- **Company-Level Analysis**: Summed up total layoffs per company and ranked them.
-- **Industry-Level Analysis**: Aggregated layoffs per industry to see which sectors were most affected.
+- **Company-Level Analysis**: Summed up total layoffs per company and ranked them. This query retrieves the top 10 companies with the highest total layoffs. The results indicate that Amazon had the most layoffs, with 18,150 employees let go, followed by Google (12,000) and Meta (11,000).
+- **Industry-Level Analysis**:  The results shows that the Consumer and Retail industries experienced the highest layoffs, with over 45,000 and 43,000 job losses, respectively. Other significantly affected sectors include Transportation, Finance, and Healthcare, each facing tens of thousands of layoffs.
 - **Country-Level Analysis**: Identified the countries with the highest number of layoffs.
-- **Stage-Based Analysis**: Explored how layoffs varied across different company stages (e.g., startup, public, etc.).
+- **Stage-Based Analysis**: Explored how layoffs varied across different company stages such as Series A, Series B, Series C, and etc.
 
 ### 3. **Layoffs Over Time**
-- **Yearly Trends**: Summarized total layoffs per year and identified peak years.
+- **Yearly Trends**: The yearly total layoffs indicate that 2022 had the highest number of layoffs, with 160,661 employees affected. This was followed by 2023, which saw a slight decline but still had a significant 125,677 layoffs. The layoffs were much lower in 2020 and especially in 2021, where it may suggest that workforce reductions peaked post-pandemic as companies adjusted to economic shifts, inflation, and market corrections.
 - **Monthly Rolling Totals**: Created a rolling total of layoffs over time to visualize long-term trends.
 - **Yearly Company Comparison**: Compared layoffs at the company level for the years 2021, 2022, and 2023 with the help of this query
 
