@@ -18,18 +18,21 @@ SELECT company, SUM(total_laid_off) as total
 FROM layoffs_datacleaning2
 GROUP BY company
 ORDER BY total desc
+LIMIT 10;
 
 -- Check which industries laid off the most employees
 SELECT industry, SUM(total_laid_off) as total
 FROM layoffs_datacleaning2
 GROUP BY industry
-ORDER BY total desc;
+ORDER BY total desc
+LIMIT 10;
 
 -- Check which countries laid off the most employees
 SELECT country, SUM(total_laid_off) as total
 FROM layoffs_datacleaning2
 GROUP BY country
-ORDER BY total desc;
+ORDER BY total desc
+LIMIT 10;
 
 -- Check which stage of the company did they laid off the most employees
 
