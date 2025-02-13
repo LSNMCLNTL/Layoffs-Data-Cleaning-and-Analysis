@@ -42,7 +42,7 @@ WHERE stage <> 'Unknown'
 GROUP BY stage
 ORDER BY stage 
 
-
+-- Total layoffs per year
 SELECT YEAR(date) as year, SUM(total_laid_off) as total_gg
 FROM layoffs_datacleaning2
 WHERE date IS NOT NULL 
