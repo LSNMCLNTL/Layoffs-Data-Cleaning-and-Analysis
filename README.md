@@ -1,7 +1,7 @@
 ﻿# Layoffs Data Cleaning and Analysis
 
 ## Project Overview
-This project focuses on cleaning and analyzing a dataset containing information about layoffs across different companies, industries, and countries. The data is refined through structured SQL queries to remove inconsistencies, duplicates, and missing values, ensuring accuracy for further exploratory analysis
+- This project focuses on cleaning and analyzing a dataset containing information about layoffs across different companies, industries, and countries. The data is refined through structured SQL queries to remove inconsistencies, duplicates, and missing values, ensuring accuracy for further exploratory analysis
 ---
 
 ## Technologies Used
